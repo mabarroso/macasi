@@ -8,7 +8,7 @@ describe Deck do
   def filled
     deck = Deck.new
     LAST.times do |i|
-      card = Card.new(i.to_s)
+      card = Card.new (i+1).to_s
       deck << card
     end
     deck
@@ -28,20 +28,20 @@ describe Deck do
   it "should be first equal 1" do
   	d = filled
 		d.first
-		d.card.name.should = '1'
+		d.card.name.should == '1'
   end
 
   it "should be last equal {LAST}" do
   	d = filled
 		d.last
-		d.card.name.should = LAST.to_s
+		d.card.name.should == LAST.to_s
   end
 
   it "should be last-1 equal {LAST-1}" do
   	d = filled
 		d.last
 		d.previous
-		d.card.name.should = (LAST-1).to_s
+		d.card.name.should == (LAST-1).to_s
   end
 
   it "should be go to first position equal first" do
@@ -50,7 +50,7 @@ describe Deck do
   	position = d.current
   	d.last
   	d.go position
-  	d.current.name.should == position
+  	d.current.should == position
   end
 
   it "should be go to last position equal last" do
@@ -59,7 +59,7 @@ describe Deck do
   	position = d.current
   	d.first
   	d.go position
-  	d.current.name.should == position
+  	d.current.should == position
   end
 
   it "should be false when next from last" do

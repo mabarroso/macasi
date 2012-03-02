@@ -22,7 +22,7 @@ class Deck
   end
 
   def add card
-    @cards[self.next_uid]  = card
+    @cards[next_uid]  = card
   end
 
   alias :<< :add
@@ -36,20 +36,20 @@ class Deck
   end
 
   def last
-    @current = size
+    @current = size - 1
   end
 
   def next
     @current += 1
-    if @current > size
-      @current = size
+    if @current > size - 1
+      @current = size - 1
       return false
     end
     return true
   end
 
   def next?
-  	@current < size
+  	@current < size - 1
 	end
 
   def previous
@@ -66,7 +66,7 @@ class Deck
 	end
 
   def go position
-    @current = position if position <= size
+    @current = position if position < size
   end
 
   def current
@@ -74,8 +74,6 @@ class Deck
 	end
 
   def card
-puts 'a'
-puts @current
     @cards[@cards.keys[@current]]
 	end
 
