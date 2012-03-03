@@ -3,11 +3,11 @@ require File.join(root, 'deck')
 require File.join(root, 'card')
 
 describe Deck do
-  LAST = 4
+  DECK_LAST = 6
 
   def filled
     deck = Deck.new
-    LAST.times do |i|
+    DECK_LAST.times do |i|
       card = Card.new (i+1).to_s
       deck << card
     end
@@ -25,23 +25,31 @@ describe Deck do
   	d1.name.should_not == d2.name
   end
 
+  it "should add" do
+    d = Deck.new
+    size = d.size
+    card = Card.new
+    d << card
+		d.size.should == size + 1
+  end
+
   it "should be first equal 1" do
   	d = filled
 		d.first
 		d.card.name.should == '1'
   end
 
-  it "should be last equal {LAST}" do
+  it "should be last equal {DECK_LAST}" do
   	d = filled
 		d.last
-		d.card.name.should == LAST.to_s
+		d.card.name.should == DECK_LAST.to_s
   end
 
-  it "should be last-1 equal {LAST-1}" do
+  it "should be last-1 equal {DECK_LAST-1}" do
   	d = filled
 		d.last
 		d.previous
-		d.card.name.should == (LAST-1).to_s
+		d.card.name.should == (DECK_LAST-1).to_s
   end
 
   it "should be go to first position equal first" do
@@ -124,6 +132,37 @@ describe Deck do
 		d.first
 		d.next
 		d.previous?.should == true
+  end
+
+  it "should not exists" do
+  	d = filled
+    card = Card.new (DECK_LAST+1).to_s
+		d.exists?(card).should_not be_true
+  end
+
+  it "should exists" do
+  	d = filled
+    card = Card.new (DECK_LAST+1).to_s
+    d << card
+		d.exists?(card).should be_true
+  end
+
+
+  it "should not delete inexistent card" do
+  	d = filled
+    card = Card.new (DECK_LAST+1).to_s
+    size = d.size
+		d.delete card
+		d.size.should == size
+  end
+
+  it "should delete card" do
+  	d = filled
+    card = Card.new (DECK_LAST+1).to_s
+    d << card
+    size = d.size
+		d.delete card
+		d.size.should == size - 1
   end
 
 end

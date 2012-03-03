@@ -27,6 +27,16 @@ class Deck
 
   alias :<< :add
 
+  def exists? card
+    find_uid card
+  end
+
+  def delete card_to_delete
+    uid = find_uid card_to_delete
+    @cards.delete uid if uid
+    uid
+  end
+
   def each &block
     @cards.each &block
   end
@@ -78,12 +88,19 @@ class Deck
 	end
 
   private
-    def uid
-      @last_uid
-    end
+  def uid
+    @last_uid
+  end
 
-    def next_uid
-      @last_uid += 1
+  def next_uid
+    @last_uid += 1
+  end
+
+  def find_uid card_to_find
+    each do |uid, card|
+      return uid if card_to_find.equal? card
     end
+    false
+  end
 
 end
