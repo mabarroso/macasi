@@ -1,6 +1,6 @@
 root = File.expand_path('../../lib', __FILE__)
-require File.join(root, 'deck')
 require File.join(root, 'card')
+require File.join(root, 'deck')
 require File.join(root, 'stack')
 
 describe Stack do
@@ -23,7 +23,7 @@ describe Stack do
 
   it "should be empty" do
   	s = Stack.new
-  	s.empty?.should == true
+  	s.empty?.should be_true
   end
 
   it "default names should be different" do
@@ -68,7 +68,7 @@ describe Stack do
     s.ids.size.times do |i|
       all_equals = all_equals && ids[i].equal?(ids_ordered[i])
     end
-		all_equals.should_not be_true
+		all_equals.should be_false
   end
 
   it "should push" do

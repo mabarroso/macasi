@@ -1,5 +1,5 @@
-root = File.expand_path('../..', __FILE__)
-require File.join(root, %w[lib card])
+root = File.expand_path('../../lib', __FILE__)
+require File.join(root, 'card')
 
 describe Card do
   it "default names should be different" do

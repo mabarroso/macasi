@@ -1,6 +1,6 @@
 root = File.expand_path('../../lib', __FILE__)
-require File.join(root, 'deck')
 require File.join(root, 'card')
+require File.join(root, 'deck')
 
 describe Deck do
   DECK_LAST = 6
@@ -16,7 +16,7 @@ describe Deck do
 
   it "should be empty" do
   	d = Deck.new
-  	d.empty?.should == true
+  	d.empty?.should be_true
   end
 
   it "default names should be different" do
@@ -73,13 +73,13 @@ describe Deck do
   it "should be false when next from last" do
   	d = filled
   	d.last
-  	d.next.should == false
+  	d.next.should be_false
   end
 
   it "should be false when previous from last" do
   	d = filled
   	d.first
-  	d.previous.should == false
+  	d.previous.should be_false
   end
 
   it "should be last when next from last" do
@@ -99,45 +99,45 @@ describe Deck do
   it "should be no next from last" do
   	d = filled
 		d.last
-		d.next?.should == false
+		d.next?.should be_false
   end
 
   it "should be no previous from first" do
   	d = filled
 		d.first
-		d.previous?.should == false
+		d.previous?.should be_false
   end
 
   it "should be next from first" do
   	d = filled
 		d.first
-		d.next?.should == true
+		d.next?.should be_true
   end
 
   it "should be previous from last" do
   	d = filled
 		d.last
-		d.previous?.should == true
+		d.previous?.should be_true
   end
 
   it "should be next from previous of last" do
   	d = filled
 		d.last
 		d.previous
-		d.next?.should == true
+		d.next?.should be_true
   end
 
   it "should be previous from next of first" do
   	d = filled
 		d.first
 		d.next
-		d.previous?.should == true
+		d.previous?.should be_true
   end
 
   it "should not exists" do
   	d = filled
     card = Card.new (DECK_LAST+1).to_s
-		d.exists?(card).should_not be_true
+		d.exists?(card).should be_false
   end
 
   it "should exists" do

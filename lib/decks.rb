@@ -1,11 +1,14 @@
-require File.expand_path('../card', __FILE__)
-require File.expand_path('../deck', __FILE__)
-require File.expand_path('../stack', __FILE__)
-require File.expand_path('../decks_factory', __FILE__)
-Dir['../decks/*.rb'].each {|file| require file }
+root = File.expand_path('../../lib', __FILE__)
+require File.join(root, 'card')
+require File.join(root, 'deck')
+require File.join(root, 'stack')
+require File.join(root, 'decks_factory')
+require File.join(root, 'decks/scenes')
 
 module Decks
-  def self.flap name
-    Factory.create eval name.to_s.capitalize
+  def self.flap type, name = false, filename = false
+    deck = Factory.create eval(type.to_s.capitalize), name
+    deck.load filename if filename
+    deck
   end
 end

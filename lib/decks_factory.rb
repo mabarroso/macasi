@@ -1,5 +1,5 @@
 module Decks
-  class Factory
+  class Factory < Stack
     attr_reader :args
 
     class << self
@@ -7,7 +7,8 @@ module Decks
     end
 
     def initialize(*args)
-      self.init(*args) if self.respond_to?(:init)
+      super
+      self.init *args if self.respond_to? :init
     end
 
     def self.create(type = self.class, *args)
@@ -19,5 +20,25 @@ module Decks
       end
       type.new(*args)
     end
+
+    def load filename
+      file = File.new(filename, 'r')
+      first = true
+      names = []
+      file.each_line("\n") do |row|
+        columns = row.split(';')
+        if first
+          first = false
+          names = columns
+        else
+          data = {}
+          names.count.times do |i|
+            data[names[i].strip.to_sym] = columns[i]
+          end
+          add Card.new data[:name], data
+        end
+      end
+    end
+
   end
 end
