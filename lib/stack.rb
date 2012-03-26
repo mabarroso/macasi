@@ -47,4 +47,29 @@ class Stack < Deck
     @stack.shuffle!
   end
 
+  def push card
+    add card
+  end
+
+  def pop
+    uid = @stack.last
+    card = @cards[@stack.last]
+    delete card
+    card
+  end
+
+  def shift
+    uid = @stack.last
+    card = @cards[@stack.first]
+    delete card
+    card
+  end
+
+  def unshift card
+    add card
+    uid = @stack.pop
+    @stack.unshift uid
+  end
+
+
 end

@@ -71,4 +71,32 @@ describe Stack do
 		all_equals.should_not be_true
   end
 
+  it "should push" do
+    s = filled
+    s.push Card.new 'foo'
+    s.last
+    s.card.name.should  == 'foo'
+  end
+
+  it "should push" do
+    s = filled
+    s.push Card.new 'foo'
+    card = s.pop
+    card.name.should  == 'foo'
+  end
+
+  it "should unshift" do
+    s = filled
+    s.unshift Card.new 'foo'
+    s.first
+    s.card.name.should  == 'foo'
+  end
+
+  it "should shift" do
+    s = filled
+    s.unshift Card.new 'foo'
+    card = s.shift
+    card.name.should  == 'foo'
+  end
+
 end
