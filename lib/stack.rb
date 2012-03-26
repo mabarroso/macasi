@@ -1,19 +1,13 @@
 class Stack < Deck
 
   def initialize name = false
-    super()
+    super
     @stack      = []
     @stack_out  = []
   end
 
-  def deck(deck)
-    deck.each do |uid, card|
-      self.add card
-    end
-  end
-
   def add card
-    super()
+    super
     @stack << uid
   end
 
@@ -21,6 +15,12 @@ class Stack < Deck
     uid = super(card_to_delete)
     @stack.delete uid if uid
     uid
+  end
+
+  def from_deck deck
+    deck.each do |uid, card|
+      self.add card
+    end
   end
 
   def card

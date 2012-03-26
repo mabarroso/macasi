@@ -16,9 +16,9 @@ describe Stack do
   end
 
   def filled
-    deck = deck_filled
     stack = Stack.new
-    stack.deck deck
+    stack.from_deck deck_filled
+    stack
   end
 
   it "should be empty" do
@@ -57,9 +57,18 @@ describe Stack do
     s.ids.size.times do |i|
       all_equals = all_equals && ids[i].equal?(ids_ordered[i])
     end
-
 		all_equals.should be_true
   end
 
+  it "should be shuffled" do
+    s = filled
+    ids_ordered = s.order
+    ids = s.shuffle
+    all_equals = true
+    s.ids.size.times do |i|
+      all_equals = all_equals && ids[i].equal?(ids_ordered[i])
+    end
+		all_equals.should_not be_true
+  end
 
 end

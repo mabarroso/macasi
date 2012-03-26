@@ -37,8 +37,9 @@ class Deck
     uid
   end
 
-  def each &block
-    @cards.each &block
+  def each &blk
+    return unless block_given?
+    @cards.keys.each{|uid| yield uid, @cards[uid] }
   end
 
   def first
