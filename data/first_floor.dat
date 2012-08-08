@@ -1,2 +1,25 @@
-type ;id;borders;connected;name
-scene;1 ;----;0;
+type ;id ;borders;connected;name        ;description
+scene;201;a-d-   ;0        ;            ;sotano
+scene;202;a-d-   ;0        ;            ;sotano
+scene;203;-ad-   ;0        ;            ;sotano
+scene;204;-bd-   ;0        ;            ;jardin
+scene;205;b-d-   ;0        ;            ;jardin
+scene;206;-bd-   ;0        ;            ;jardin
+scene;207;-bdc   ;0        ;            ;2
+scene;208;--dc   ;0        ;            ;2
+scene;209;--dc   ;0        ;            ;2
+scene;210;-dd-   ;0        ;            ;
+scene;211;bdd-   ;0        ;            ;
+scene;212;-dd-   ;0        ;            ;
+scene;213;-dd-   ;0        ;            ;
+scene;214;d-d-   ;0        ;            ;
+scene;215;dbd-   ;0        ;            ;
+scene;216;d-d-   ;0        ;            ;
+scene;217;d-d-   ;0        ;            ;
+scene;218;ddd-   ;0        ;            ;
+scene;219;dddb   ;0        ;            ;
+scene;220;ddd-   ;0        ;            ;
+scene;221;dddd   ;0        ;            ;
+scene;222;dddd   ;0        ;            ;
+scene;223;d-d-   ;0        ;            ;
+scene;224;d-d-   ;0        ;            ;
